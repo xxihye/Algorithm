@@ -31,7 +31,6 @@ public class BOJ2606 {
 			add(i1, i2);
 		}
 		
-		
 		dfs(nodes[1]);
 		
 		System.out.println(vc);
