@@ -18,10 +18,10 @@ public class BOJ2606 {
 		c = Integer.parseInt(br.readLine());
 		nodes = new Node[c+1];
 		
+		
 		for(int i=1; i<=c; i++) {
 			nodes[i] = new Node(i); 
 		}
-		
 		
 		int pairs = Integer.parseInt(br.readLine());
 		for(int i=0; i<pairs; i++) {
