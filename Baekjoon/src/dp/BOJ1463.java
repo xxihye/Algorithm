@@ -8,11 +8,14 @@ public class BOJ1463 {
 	static int num;
 	
 	public static void main(String[] args) {
+		System.out.println(Integer.MAX_VALUE);
+		
 		Scanner sc = new Scanner(System.in);
 		
 		num = sc.nextInt();
 		
 		if(num == 2 || num == 3) System.out.println(1);
+		else if(num == 1) System.out.println(0);
 		else {
 			dp = new int[num+1];
 			dp[2] = 1;
