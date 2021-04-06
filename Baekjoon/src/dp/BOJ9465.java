@@ -38,8 +38,8 @@ public class BOJ9465 {
 		stickers[1][1] += stickers[0][0];
 		
 		for(int i=2; i<n; i++) {
-			stickers[0][i] += Math.max(Math.max(stickers[0][i-2], stickers[1][i-2]), stickers[1][i-1]); 
-			stickers[1][i] += Math.max(Math.max(stickers[0][i-2], stickers[1][i-2]), stickers[0][i-1]);
+			stickers[0][i] += Math.max(stickers[1][i-2], stickers[1][i-1]); 
+			stickers[1][i] += Math.max(stickers[0][i-2], stickers[0][i-1]);
 		}
 		
 		System.out.println(Math.max(stickers[0][n-1], stickers[1][n-1]));
