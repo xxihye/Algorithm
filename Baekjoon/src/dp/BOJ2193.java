@@ -10,19 +10,17 @@ public class BOJ2193 {
 		
 		int n = sc.nextInt();
 
-		if(n < 3) System.out.println(1);
+		if(n == 1) System.out.println(1);
 		else {
-			
 			long[] dp = new long[n+1];
 			dp[1] = 1;
-			dp[2] = 1;
 			
-			for(int i=3; i<=n; i++) {
+			for(int i=2; i<=n; i++) {
 				dp[i] = dp[i-2] + dp[i-1];
 			}
 			
-			System.out.println(dp[n]);
-			//System.out.println(dp(n));
+//			System.out.println(dp[n]);
+			System.out.println(dp(n));
 		} 
 	}
 	
@@ -31,9 +29,8 @@ public class BOJ2193 {
 		long[][] dp = new long[n+1][2];
 		
 		dp[1][1] = 1;
-		dp[2][0] = 1;
 		
-		for(int i=3; i<=n; i++) {
+		for(int i=2; i<=n; i++) {
 			dp[i][0] = dp[i-1][0] + dp[i-1][1];
 			dp[i][1] = dp[i-1][0];
 		}
