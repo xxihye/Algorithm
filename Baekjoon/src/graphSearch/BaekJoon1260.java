@@ -1,4 +1,4 @@
-package graphsearch;
+package graphSearch;
 
 import java.util.Collections;
 import java.util.LinkedList;
