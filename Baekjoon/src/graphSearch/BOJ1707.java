@@ -10,7 +10,6 @@ import java.util.StringTokenizer;
 public class BOJ1707 {
 
 	static final int RED = 1;
-	static final int BLUE = -1;
 	static BipartiteGraph[] graph;
 	static int v, e;
 	static boolean chkBipartite;
