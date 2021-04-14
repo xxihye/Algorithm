@@ -11,7 +11,7 @@ public class BOJ1707 {
 
 	static final int RED = 1;
 	static BipartiteGraph[] graph;
-	static int v, e;
+	static int v, e; 
 	static boolean chkBipartite;
 	
 	public static void main(String[] args) throws IOException {
