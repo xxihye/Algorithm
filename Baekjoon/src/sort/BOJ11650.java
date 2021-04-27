@@ -43,15 +43,22 @@ class Coordinate implements Comparable<Coordinate>{
 		this.y = y;
 	}
 
+	//11651
 	@Override
 	public int compareTo(Coordinate o) {
-		if(this.x > o.x) return 1;
-		else if(this.x == o.x && this.y > o.y) return 1;
-		
+		if(this.y > o.y) return 1;
+		else if(this.y == o.y && this.x > o.x) return 1;
 		return -1;
 	}
 
-	
+	//11650
+//	@Override
+//	public int compareTo(Coordinate o) {
+//		if(this.x > o.x) return 1;
+//		else if(this.x == o.x && this.y > o.y) return 1;
+//		
+//		return -1;
+//	}
 	
 	
 }
