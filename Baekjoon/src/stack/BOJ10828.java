@@ -3,7 +3,7 @@ package stack;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class Main {
+public class BOJ10828 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		StringBuilder sb = new StringBuilder();
@@ -14,9 +14,9 @@ public class Main {
 			String cmnd = sc.next();
 
 			if (cmnd.contains("push")) {
-				sb.append(stk.push(sc.nextInt()) + "\n");
+				stk.push(sc.nextInt());
 			} else if (cmnd.contains("top")) {
-				sb.append(stk.isEmpty() ? 1 + "\n" : stk.peek() + "\n");
+				sb.append(stk.isEmpty() ? -1 + "\n" : stk.peek() + "\n");
 			} else if (cmnd.contains("size")) {
 				sb.append(stk.size() + "\n");
 			} else if (cmnd.contains("pop")) {
@@ -25,5 +25,7 @@ public class Main {
 				sb.append(stk.isEmpty() ? 1 + "\n" : 0 + "\n");
 			}
 		}
+		
+		System.out.println(sb.toString());
 	}
 }
