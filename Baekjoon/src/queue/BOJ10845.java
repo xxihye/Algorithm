@@ -1,8 +1,7 @@
 package queue;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.Scanner;
 
 public class BOJ10845 {
@@ -12,21 +11,19 @@ public class BOJ10845 {
 		StringBuilder sb = new StringBuilder();
 		
 		int n = sc.nextInt();
+		LinkedList<Integer> q = new LinkedList<Integer>();
 		
-		Queue<Integer> q = new PriorityQueue<Integer>();
-		int rear = 0;
 		while(n-- > 0) {
 			String order = sc.next();
-			
+
 			if(order.contains("push")) {
-				rear = sc.nextInt();
-				q.add(rear);
+				q.add(sc.nextInt());
 			}else if(order.contains("pop")) {
 				sb.append(q.isEmpty() ? "-1 \n" : q.poll()+ "\n");
 			}else if(order.contains("front")) {
-				sb.append(q.isEmpty() ? "-1 \n" : q.peek()+ "\n");
+				sb.append(q.isEmpty() ? "-1 \n" : q.getFirst()+ "\n");
 			}else if(order.contains("back")) {
-				sb.append(q.isEmpty() ? "-1 \n" : rear+ "\n");
+				sb.append(q.isEmpty() ? "-1 \n" : q.getLast()+ "\n");
 			}else if(order.contains("size")) {
 				sb.append(q.size() + "\n");
 			}else sb.append(q.isEmpty() ? "1\n" : "0\n");
