@@ -54,7 +54,7 @@ public class BOJ9466 {
 			c++;
 		}else visited[i] = true;
 		
-		if(!done[arr[i]]) dfs(i);
+		if(!done[arr[i]]) dfs(arr[i]);
 		
 		visited[i] = false;
 		done[i] = true;
