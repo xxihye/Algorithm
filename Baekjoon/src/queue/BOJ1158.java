@@ -16,8 +16,7 @@ public class BOJ1158 {
 		
 		for(int i=1; i<=n; i++) queue.add(i);
 		
-		StringBuilder sb = new StringBuilder();
-		sb.append('<');
+		StringBuilder sb = new StringBuilder("<");
 		
 		while(queue.size() > 1) {
 			for(int i=0; i<k-1; i++) queue.add(queue.poll());
