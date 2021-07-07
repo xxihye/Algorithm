@@ -8,6 +8,8 @@ public class BOJ1850 {
 		
 		long a = sc.nextLong(), b = sc.nextLong();
 		
+		sc.close();
+		
 		long gcd = gcd(Math.max(a, b), Math.min(a, b));
 		
 		StringBuilder sb = new StringBuilder();
