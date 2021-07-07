@@ -9,6 +9,8 @@ public class BOJ11005 {
 		long n = sc.nextLong();
 		int b = sc.nextInt();
 		
+		sc.close();
+		
 		char[] arr = new char[b];
 		for(int i=10; i<b; i++) arr[i] = (char)('A' + i - 10); 
 		
