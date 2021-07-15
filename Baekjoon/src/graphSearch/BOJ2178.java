@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class BaekJoon2178 {
+public class BOJ2178 {
 
 	static int n, m;
 	static int[][] map;

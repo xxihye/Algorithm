@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class BaekJoon1260 {
+public class BOJ1260 {
 
 	public static void main(String[] args) {
 

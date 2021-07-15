@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class BaekJoon7562 {
+public class BOJ7562 {
 
 	static int[][] chess;
 	static int l;

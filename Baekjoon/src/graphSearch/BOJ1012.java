@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BaekJoon1012 {
+public class BOJ1012 {
 	
 	static int[][] cabbage;
 	static int n, m;

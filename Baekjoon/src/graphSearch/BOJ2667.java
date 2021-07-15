@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-public class BaekJoon2667 {
+public class BOJ2667 {
 	
 	static int n;
 	static int[][] map;

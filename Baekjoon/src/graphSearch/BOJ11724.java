@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BaekJoon11724 {
+public class BOJ11724 {
 	
 	static int n, m;
 	static int[] visited;

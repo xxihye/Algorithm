@@ -2,7 +2,7 @@ package graphSearch;
 
 import java.util.Scanner;
 
-public class BaekJoon6603 {
+public class BOJ6603 {
 
 	static int N;
 	static int[] arr;

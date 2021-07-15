@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class BaekJoon1697 {
+public class BOJ1697 {
 	
 	static int n, k;
 	static int[] check = new int[100001]; // 방문여부 체크와 시간을 동시에..!
