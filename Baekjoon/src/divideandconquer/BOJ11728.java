@@ -21,7 +21,6 @@ public class BOJ11728 {
 		st = new StringTokenizer(br.readLine());
 		for(int i=0; i<m; i++) arrB[i] = Integer.parseInt(st.nextToken());
 		
-		
 		int a = 0, b = 0;
 		while(a < n || b < m) {
 			if(a < n && (b == m || arrA[a] <= arrB[b])) bw.write(arrA[a++] + " ");
