@@ -32,7 +32,7 @@ public class TSP1 {
 				visited[i] = false;
 			}
 			
-			System.out.printf("%.10f \n" , min);
+			System.out.printf("%.10f", min);
 		}
 		br.close();
 	}
