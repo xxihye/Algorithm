@@ -17,7 +17,6 @@ public class WILDCARD {
 		
 		int c = Integer.parseInt(br.readLine());
 		
-		
 		while(c-- > 0) {
 			wildCard = br.readLine().toCharArray();
 			int n = Integer.parseInt(br.readLine());
@@ -46,17 +45,14 @@ public class WILDCARD {
 			if(wildCard[w] == '?' || wildCard[w] == file[f]) 
 				return cache[w][f] = match(w+1, f+1);
 		
-		
 		//와일드카드와 파일 명 모두 끝에 도달, 파일명도 끝에 도달 해야만 일치
 		if(w == wildCard.length) 
 			return cache[w][f] = (f == file.length ? 1 : -1);
 		
 		//*문자를 만난 경우
-		if(wildCard[w] == '*') {
-			if(match(w+1, f) == 1 || (f < file.length && match(w, f+1) == 1)) {
+		if(wildCard[w] == '*') 
+			if(match(w+1, f) == 1 || (f < file.length && match(w, f+1) == 1)) 
 				return cache[w][f] = 1;
-			}
-		}
 
 		return cache[w][f] = -1;
 	}
