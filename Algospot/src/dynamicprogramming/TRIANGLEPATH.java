@@ -21,9 +21,9 @@ public class TRIANGLEPATH {
 			cache = new int[n][n];
 			
 			StringTokenizer st;
-			for(int i=0; i<n; i++) {
+			for(int i=0; i<n; ++i) {
 				st = new StringTokenizer(br.readLine(), " ");
-				for(int j=0; j<=i; j++) triangle[i][j] = Integer.parseInt(st.nextToken());
+				for(int j=0; j<=i; ++j) triangle[i][j] = Integer.parseInt(st.nextToken());
 			}
 			
 			System.out.println(maxPath(0,0));
