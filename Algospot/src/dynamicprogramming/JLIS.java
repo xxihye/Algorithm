@@ -40,6 +40,7 @@ public class JLIS {
 			
 			System.out.println(jlis(-1, -1) - 2);
 		}
+		br.close();
 		
 	}
 	
