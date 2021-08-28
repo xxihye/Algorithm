@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class PI {
 
 	static int n;
+	static final int INF = 987654321;
 	static String str;
 	static int[] cache;
 
@@ -17,34 +18,33 @@ public class PI {
 		Scanner sc = new Scanner(System.in);
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		int c = sc.nextInt();
-
+		
 		while (--c >= 0) {
 			str = sc.next();
 			n = str.length();
-			cache = new int[n+2];
+			cache = new int[n];
+			Arrays.fill(cache, -1);
 			
 			bw.write(memorize(0) + "\n");
-			System.out.println(Arrays.toString(cache));
 		}
 		
 		bw.flush();
 		bw.close();
 		sc.close();
 	}
+	
 
 	public static int memorize(int start) {
 		if(start == n) return 0;
 		
-		if(cache[start] != 0) return cache[start];
+		if(cache[start] != -1) return cache[start];
 		
-		int res = Integer.MAX_VALUE;
+		int res = INF;
 		for(int L=3; L<=5; ++L) {
 			if(start + L <= n) {
-				res = Math.min(res, memorize(start + L) 
-									+ classify(start, start+L));
+				res = Math.min(res, memorize(start + L) + classify(start, start+L));
 			}
 		}
-		
 		return cache[start] = res;
 	}
 	
@@ -56,17 +56,16 @@ public class PI {
 	 */
 	public static int classify(int a, int b) {
 		//모든 숫자가 같을 때
-		String piece = str.substring(a, b),
-				tmp = sameStr(a, b);
+		String piece = str.substring(a, b);
 			  
-		int length = tmp.length();
-		if(piece.equals(tmp)) return 1;
+		if(piece.equals(sameStr(a, b))) return 1;
 		
 		//등차 수열인지 검사
 		boolean progressive = true;
-		int diff = tmp.charAt(1)  - tmp.charAt(0);
+		int length = piece.length(); 
+		int diff = piece.charAt(1) - piece.charAt(0); 
 		for(int i=0; i< length - 1; ++i) {
-			if(tmp.charAt(i+1) - tmp.charAt(i) != diff) {
+			if(piece.charAt(i+1) - piece.charAt(i) != diff) {
 				progressive = false;
 				break;
 			}
@@ -80,7 +79,7 @@ public class PI {
 		//두 수가 번갈아 등장하는지 확인
 		boolean alternating = true;
 		for(int i=0; i<length; ++i) {
-			if(tmp.charAt(i) != tmp.charAt(i%2)) {
+			if(piece.charAt(i) != piece.charAt(i%2)) {
 				alternating = false;
 				break;
 			}
@@ -92,8 +91,8 @@ public class PI {
 	}
 	
 	public static String sameStr(int a, int b) {
-		String tmp = "";
-		for(int i=a; i<b; ++i) tmp += str.charAt(a);
-		return tmp;
+		char[] arr = new char[b-a];
+		Arrays.fill(arr, str.charAt(a));
+		return new String(arr);
 	}
 }
