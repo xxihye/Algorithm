@@ -11,7 +11,7 @@ public class LAN{
 		
 		x = new int[501];
 		y = new int[501];
-		map = new double[501][501];
+		map = new double[3][3];
 		
 		Scanner sc = new Scanner(System.in);
 		int test = sc.nextInt();
