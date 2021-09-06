@@ -1,6 +1,7 @@
 package mst;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class LAN{
 	
@@ -39,6 +40,7 @@ public class LAN{
 		}
 	}
 	
+	
 	//각각 모든 정점끼리의 거리를 계산 후 map에 저장
 	static void distance(int N){
 		
@@ -52,30 +54,31 @@ public class LAN{
 	static double prem(int N){
 		double sum = 0;
 		boolean [] visit = new boolean[N];
-		double [] length = new double[N];
+		//트리에 인접한 간선 중 해당 정점에 닿는 최소 간선의 정보를 저장
+		double [] minWeight = new double[N]; 
 		
-		Arrays.fill(length, 0x7fffffff);
+		Arrays.fill(minWeight, 0x7fffffff);
 		
-		length[0] = 0;
+		//0번 정점을 시작점으로 : 항상 트리에 가장 먼저 추가
+		minWeight[0] = 0;
 		for(int i = 0; i < N; ++i){
 			int now = 0;
 			double nowd = 0x7fffffff;
 			for(int j = 0; j < N; ++j){
-				if(!visit[j] && length[j] < nowd){
+				if(!visit[j] && (minWeight[j] < nowd)){
 					now = j;
-					nowd = length[j];
+					nowd = minWeight[j];
 				}
 			}
 			
 			if(nowd == 0x7fffffff) break;
 			
-			visit[now] = true; // 가장 짧은 간선(가중치가 작은)의 정점의 방문 여부 저장
-			sum += nowd;		// 가중치 누적합 
+			visit[now] = true; 
+			sum += nowd;
 			
 			for(int j = 0; j < N; ++j)
-				if(map[now][j] < length[j]) 
-					length[j] = map[now][j];
-			
+				if(map[now][j] < minWeight[j]) 
+					minWeight[j] = map[now][j];
 		}
 		return sum;
 	}
