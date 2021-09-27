@@ -1,6 +1,5 @@
 package etc;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class BOJ2920 {
@@ -24,9 +23,5 @@ public class BOJ2920 {
 		}
 		
 		System.out.println(answer);
-		
-		
-		
-		
 	}
 }
