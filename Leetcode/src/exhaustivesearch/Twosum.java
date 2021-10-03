@@ -1,4 +1,4 @@
-package bruteforce;
+package exhaustivesearch;
 
 import java.util.HashMap;
 
