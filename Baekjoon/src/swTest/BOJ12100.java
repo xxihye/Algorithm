@@ -20,12 +20,14 @@ public class BOJ12100 {
 		for(int i=0; i<4; i++) bruteforce(i, 0, board.clone());
 		
 		System.out.println(max);
+		sc.close();
 	}
 	
 	public static void bruteforce(int d, int depth, int[][] board) {
 		if(depth == 5) return;
 		
 		Queue<Integer> q = new LinkedList<>();
+		int[][] newBoard = new int[n][n];
 		int idx;
 		switch(d) {
 			case 0 :
@@ -39,7 +41,7 @@ public class BOJ12100 {
 						int now = q.poll();
 						if(!q.isEmpty() && q.peek() == now) now += q.poll();
 						max = Math.max(now, max);
-						board[idx++][j] = now;
+						newBoard[idx++][j] = now;
 					}
 				}
 				break;
@@ -54,7 +56,7 @@ public class BOJ12100 {
 						int now = q.poll();
 						if(!q.isEmpty() && q.peek() == now) now += q.poll();
 						max = Math.max(now, max);
-						board[idx--][j] = now;
+						newBoard[idx--][j] = now;
 					}
 				}
 				break;
@@ -69,7 +71,7 @@ public class BOJ12100 {
 						int now = q.poll();
 						if(!q.isEmpty() && q.peek() == now) now += q.poll();
 						max = Math.max(now, max);
-						board[i][idx++] = now;
+						newBoard[i][idx++] = now;
 					}
 				}
 				
@@ -85,12 +87,12 @@ public class BOJ12100 {
 						int now = q.poll();
 						if(!q.isEmpty() && q.peek() == now) now += q.poll();
 						max = Math.max(now, max);
-						board[i][idx--] = now;
+						newBoard[i][idx--] = now;
 					}
 				}
 				break;
 		}
 		
-		for(int i=0; i<4; i++) bruteforce(i, depth+1, board.clone());
+		for(int i=0; i<4; i++) bruteforce(i, depth+1, newBoard.clone());
 	}
 }
