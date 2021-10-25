@@ -13,6 +13,7 @@ import java.util.PriorityQueue;
  *	코스 배열만큼 조합이 끝나면 pq 사이즈만큼 배열을 생성하여 pq의 모든 요소 저장
  *	-> pq를 통해 배열에 오름차순 정렬하여 저장할 수 있음.
  *
+ *	프로그래머스의 제출된 다른 사람의 답안을 보고 이해한 것 정리
  */
 public class MenuRenewal {
 	static HashMap<String, Integer> map;
