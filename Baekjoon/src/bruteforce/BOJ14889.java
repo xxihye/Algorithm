@@ -46,8 +46,6 @@ public class BOJ14889 {
 		}
 		
 		for(int i=start; i<n; i++) {
-			if(select[i]) continue;
-			
 			select[i] = true;
 			bruteforce(i+1, cnt+1);
 			select[i] = false;
