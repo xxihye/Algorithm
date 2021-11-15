@@ -7,8 +7,8 @@ import java.util.Arrays;
 
 public class BOJ14891 {
 	
-	static int[][] gears = new int[4][8]; // 0: N±Ø, 1 : S±Ø
-	static int[] dir = new int[4]; // 1 : ½Ã°è¹æÇâ, -1 : ¹Ý½Ã°è¹æÇâ 
+	static int[][] gears = new int[4][8]; // 0: Nï¿½ï¿½, 1 : Sï¿½ï¿½
+	static int[] dir = new int[4]; // 1 : ï¿½Ã°ï¿½ï¿½ï¿½ï¿½, -1 : ï¿½Ý½Ã°ï¿½ï¿½ï¿½ï¿½ 
 	static boolean[] isRotate = new boolean[4];
 	
 	public static void main(String[] args) throws IOException{
@@ -49,7 +49,6 @@ public class BOJ14891 {
 			tmp[j] = d == 1 ? gears[i][(j-d+8)%8] : gears[i][(j-d)%8];
 		
 		gears[i] = tmp.clone();
-		return;
 	}
 	
 	
