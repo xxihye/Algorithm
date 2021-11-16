@@ -72,3 +72,5 @@ local.properties
 
 .classpath
 .project
+.classes
+/classes
