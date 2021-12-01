@@ -30,10 +30,8 @@ public class BOJ2212 {
             return;
         }
 
-        int[] temp = new int[n];
         for(int i=1; i<n; i++) {
             dist[i-1] = new int[] {i-1, sensors[i] - sensors[i-1]};
-            temp[i-1] = dist[i-1][1];
         }
 
         Arrays.sort(dist, (o1, o2) -> {
@@ -41,8 +39,11 @@ public class BOJ2212 {
             return -1;
         });
 
-        for(int i=0; i<k-1; i++) temp[dist[i][0]] = 0;
+        int res = 0;
+        for(int i=k-1; i<n-1; i++) res += dist[i][1];
 
-        System.out.println(Arrays.stream(temp).sum());
+        System.out.println(res);
+
+//        System.out.println(Arrays.stream(dist).map(o1 -> o1[1]).mapToInt(Integer::intValue).sum());
     }
 }
