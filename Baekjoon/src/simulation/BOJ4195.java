@@ -1,4 +1,4 @@
-package implement;
+package simulation;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -45,8 +45,8 @@ public class BOJ4195 {
 	
 
 	public static void union(String f1, String f2) {
-		//°¢ °¢ µÎ ¿ø¼ÒÀÇ ºÎ¸ð¸¦ Ã£¾Æ¼­
-		//¿ÞÂÊ ¿ø¼ÒÀÇ ºÎ¸ð¸¦ ¿À¸¥Á· ¿ø¼ÒÀÇ ºÎ¸ðÀÇ ºÎ¸ð·Î ¼³Á¤
+		//ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¸ï¿½ Ã£ï¿½Æ¼ï¿½
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¸ï¿½ï¿½ï¿½ ï¿½Î¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		f1 = find(f1);
 		f2 = find(f2);
 		
