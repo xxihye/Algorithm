@@ -25,7 +25,6 @@ public class BOJ16236 {
                 if (fish[i][j] == 9) {
                     shark = new Fish(i, j, 2, 0 , 0);
                     fish[i][j] = 0;
-                    continue;
                 }else if(fish[i][j] == 1) feeds++;
             }
         }
