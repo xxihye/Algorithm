@@ -42,10 +42,7 @@ public class BOJ17779 {
         int tmpY = y;
         for(int i=0; i<x+d1; i++){
             if(i >= x) tmpY--;
-            for(int j=0; j<=tmpY; j++){
-
-                district[1] += people[i][j];
-            }
+            for(int j=0; j<=tmpY; j++) district[1] += people[i][j];
         }
 
         //2번 구역
@@ -58,9 +55,7 @@ public class BOJ17779 {
         //3번 구역
         tmpY = y-d1;
         for(int i=x+d1; i<N; i++){
-            for(int j=0; j<tmpY; j++) {
-                district[3] += people[i][j];
-            }
+            for(int j=0; j<tmpY; j++) district[3] += people[i][j];
             if(i < x+d1+d2) tmpY++;
         }
 
