@@ -44,6 +44,7 @@ public class BOJ17837 {
         int turn = 1, idx, size;
         LinkedList<Integer> list;
         
+        outer :
         while(turn < INF){
             for(int i=1; i<=k; i++){
                 Marker m = markerInfo[i];
@@ -60,22 +61,10 @@ public class BOJ17837 {
                     c = m.y + dir[m.d][1];
     
                     //다시 이동하려는 칸이 체스판을 벗어나는 경우 & 파란칸인 경우 방향만 바꿔주고 가만히 있음
-                    if((r < 0 || r >= n || c < 0 || c >= n) || board[r][c] == 2) continue;
-                    
-                    //이동할 수 있는 경우라면 해당 말을 옮겨주기
-                    idx = list.indexOf(m.no);
-                    list.remove(idx);
-                    markers[r][c].add(m.no);
-                    markerInfo[m.no].x = r;
-                    markerInfo[m.no].y = c;
-    
-                }else if(list.peekLast() == m.no) { //말 하나만 움직이는 경우
-                    int no = list.pollLast();
-                    markers[r][c].offer(no);
-                    markerInfo[no].x = r;
-                    markerInfo[no].y = c;
-                }else if(board[r][c] == 0){ //여러 개의 말이 흰칸으로 움직일 때
-                    list = markers[m.x][m.y];
+                    if ((r < 0 || r >= n || c < 0 || c >= n) || board[r][c] == 2) continue;
+                }
+                
+                if(board[r][c] == 0){ //여러 개의 말이 흰칸으로 움직일 때
                     idx = list.indexOf(m.no);
                     size = list.size();
                     
@@ -87,10 +76,8 @@ public class BOJ17837 {
                     }
                     
                     while(size - (idx++) > 0) list.pollLast();
-                    
 
                 }else if(board[r][c] == 1){ //여러개의 말이 빨간 칸으로 움직일 때
-                    list = markers[m.x][m.y];
                     
                     while(true){
                         int no = list.pollLast();
@@ -101,20 +88,13 @@ public class BOJ17837 {
                     }
                 }
     
-                if(markers[r][c].size() >= 4) {
-                    System.out.println(turn);
-                    return;
-                }
-    
-                System.out.println(turn);
+                if(markers[r][c].size() >= 4) break outer;
             }
             turn++;
         }
     
         System.out.println(turn == INF ? -1 : turn);
     }
-    
-    
     
     public static int changeDir(int d){
         return d % 2 == 0 ? d+1 : d-1;
