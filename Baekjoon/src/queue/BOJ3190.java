@@ -1,10 +1,10 @@
-package swTest;
+package queue;
 
 import java.util.*;
 
 public class BOJ3190 {
 	
-	static int[][] dir = {{0, 1},{1, 0},{0, -1},{-1, 0}}; //¿ìÇÏÁÂ»ó
+	static int[][] dir = {{0, 1},{1, 0},{0, -1},{-1, 0}}; //ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½
 	static Deque<int[]> snake;
 	
 	public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class BOJ3190 {
 		for(int i=0; i<l; i++) moves.add(new Move(sc.nextInt(), sc.next()));
 		
 		int d = 0, time = 0;
-		snake = new LinkedList<int[]>();
+		snake = new LinkedList<>();
 		snake.offer(new int[] {1,1});
 		
 		while(true) {
@@ -33,9 +33,9 @@ public class BOJ3190 {
 			if(r == 0 || r == n+1 || c == 0 || c == n+1) break;
 			else if(isContain(r, c)) break;
 				
-			snake.addFirst(new int[] {r,c}); //¸Ó¸® ´Ã·Á¼­ ´ÙÀ½Ä­¿¡ À§Ä¡½ÃÅ´
-			if(board[r][c] == 1) board[r][c] = 0; //»ç°ú¸Ô±â -> ¸öÅë ¾ÈÁÙ¿©µµ µÊ
-			else snake.removeLast(); //²¿¸®Ä­ ºñ¿öÁÜ
+			snake.addFirst(new int[] {r,c}); //ï¿½Ó¸ï¿½ ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä­ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½Å´
+			if(board[r][c] == 1) board[r][c] = 0; //ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ -> ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¿ï¿½ï¿½ï¿½ ï¿½ï¿½
+			else snake.removeLast(); //ï¿½ï¿½ï¿½ï¿½Ä­ ï¿½ï¿½ï¿½ï¿½ï¿½
 			
 			if(!moves.isEmpty() && moves.peek().time == time) {
 				Move m = moves.poll();

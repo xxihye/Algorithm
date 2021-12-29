@@ -1,4 +1,4 @@
-package swTest;
+package graphSearch;
 
 import java.util.*;
 
@@ -30,7 +30,7 @@ public class BOJ13460 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-        // N, M (3 ¡Â N, M ¡Â 10)
+        // N, M (3 ï¿½ï¿½ N, M ï¿½ï¿½ 10)
         N = sc.nextInt();
         M = sc.nextInt();
 
@@ -61,10 +61,10 @@ public class BOJ13460 {
 		while (!q.isEmpty()) {
 			Ball now = q.poll();
 
-			// ½ÇÆÐ
+			// ï¿½ï¿½ï¿½ï¿½
 			if (map[now.Blue[0]][now.Blue[1]] == 'O' || now.move == 11) continue;
 
-			// ¼º°ø!
+			// ï¿½ï¿½ï¿½ï¿½!
 			if (map[now.Red[0]][now.Red[1]] == 'O') {
 				System.out.println(now.move);
 				return;
@@ -88,23 +88,23 @@ public class BOJ13460 {
 		boolean flag = false;
 		
 		switch (dir) {
-		case 0: // »ó
+		case 0: // ï¿½ï¿½
 			if (next.Red[0] < next.Blue[0]) flag = true;
 			break;
-		case 1: // ÇÏ
+		case 1: // ï¿½ï¿½
 			if (next.Red[0] > next.Blue[0]) flag = true;
 			break;
-		case 2: // ÁÂ
+		case 2: // ï¿½ï¿½
 			if (next.Red[1] < next.Blue[1]) flag = true;
 			break;
-		case 3: // ¿ì
+		case 3: // ï¿½ï¿½
 			if (next.Red[1] > next.Blue[1]) flag = true;
 			break;
 		}
 
 		int nr = 0, nc = 0;
 		if (!flag) {
-			// ÆÄ¶õ°ø ¸ÕÀú ¿òÁ÷ÀÌ´Â °æ¿ì
+			// ï¿½Ä¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½
 			nr = next.Blue[0] + dr[dir];
 			nc = next.Blue[1] + dc[dir];
 			while (map[nr][nc] == '.') {

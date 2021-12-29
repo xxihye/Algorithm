@@ -1,4 +1,4 @@
-package swTest;
+package math;
 
 import java.io.*;
 import java.util.*;

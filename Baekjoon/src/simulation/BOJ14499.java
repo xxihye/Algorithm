@@ -1,11 +1,11 @@
-package swTest;
+package simulation;
 
 import java.io.*;
 import java.util.*;
 
 public class BOJ14499 {
 	
-	static int[][] dir = {{0, 0}, {0, 1}, {0, -1}, {-1, 0}, {1, 0}}; //µ¿¼­ºÏ³² : ¿ìÁÂ»óÇÏ
+	static int[][] dir = {{0, 0}, {0, 1}, {0, -1}, {-1, 0}, {1, 0}}; //ï¿½ï¿½ï¿½ï¿½ï¿½Ï³ï¿½ : ï¿½ï¿½ï¿½Â»ï¿½ï¿½ï¿½
 	static int[] dice = new int[6]; 
 	
 	public static void main(String[] args) throws IOException{
@@ -52,38 +52,38 @@ public class BOJ14499 {
 		
 	}
 	
-	//ÁÖ»çÀ§°¡ µ¹¾Æ°¡Áö ¾Ê°í ¼ýÀÚ¸¸ µ¹·ÁÁö°ÔÇÔ
+	//ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public static void rollDice(int cmd) {
 		
-		//ÁÖ»çÀ§ÀÇ ¼ýÀÚ¸¦ temp[]¿¡ º¹»ç
+		//ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ temp[]ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		int[] temp = new int[6];
 		for(int i=0; i<6; i++) temp[i] = dice[i];
 
-		//ÀÌµ¿¸í·É ¹æÇâ¿¡ µû¶ó ÁÖ»çÀ§¿¡ ¼ýÀÚ¸¦ ¹Ù²ã ÀúÀå
+		//ï¿½Ìµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½â¿¡ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½Ù²ï¿½ ï¿½ï¿½ï¿½ï¿½
 		switch(cmd){
 		case 1:
-			//µ¿
+			//ï¿½ï¿½
 			dice[0] = temp[2];
 			dice[2] = temp[5];
 			dice[5] = temp[3];
 			dice[3] = temp[0];
 			break;
 		case 2:
-			//¼­
+			//ï¿½ï¿½
 			dice[0] = temp[3];
 			dice[3] = temp[5];
 			dice[5] = temp[2];
 			dice[2] = temp[0];
 			break;
 		case 3:
-			//ºÏ
+			//ï¿½ï¿½
 			dice[0] = temp[1];
 			dice[1] = temp[5];
 			dice[4] = temp[0];
 			dice[5] = temp[4];
 			break;
 		case 4:
-			//³²
+			//ï¿½ï¿½
 			dice[0] = temp[4];
 			dice[1] = temp[0];
 			dice[4] = temp[5];

@@ -1,4 +1,4 @@
-package swTest;
+package bruteforce;
 
 import java.io.*;
 import java.util.*;
