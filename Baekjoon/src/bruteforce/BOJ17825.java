@@ -16,17 +16,19 @@ public class BOJ17825 {
 		dice = new int[10];
 		for(int i=0; i<dice.length; i++) dice[i] = sc.nextInt();
 		
-		dfs(0, "");
+		//중복수열,, i는 움직이는 말의 개수
+		for(int i=1; i<=4; i++) dfs(i,  "");
+		
 		System.out.println(res);
 	}
 	
-	public static void dfs(int depth, String order){
-		if(depth == 10){
+	public static void dfs(int arrange, String order){
+		if(order.length() == 10){
 			res = Math.max(res, game(order));
 			return;
 		}
 		
-		for(int i=0; i<4; i++) dfs(depth+1, order + i);
+		for(int i=0; i<arrange; i++) dfs(arrange,  order + i);
 	}
 	
 	public static int game(String order){
@@ -36,34 +38,40 @@ public class BOJ17825 {
 	   	int total = 0;
 		for(int i=0; i<10; i++){
 			int no = order.charAt(i) - '0', //i번째 턴에서 움직일 말의 번호
-				cnt = dice[i], //i번째 턴에서 말이 움직여야하는 칸 수
-				next;
+				cnt = dice[i]; //i번째 턴에서 말이 움직여야하는 칸 수
 			
-			if(marker[no] == 41) continue;
+			if(marker[no] == 41) continue; // 이미 도착한 말이므로 다음 말 움직임
 			
-			next = getNext(marker, no, cnt);
-			//이동을 마치는 칸이 도착칸이 아니면서 해당 칸에 다른 말이 있을 때
+			int next = getNext(marker, no, cnt);
+			
+			//이동을 마치는 칸이 도착칸이 아니면서 해당 칸에 다른 말이 있을 때, 조건에 어긋나는 경우이므로 바로 RETURN
 			if(next < 41 && chk[next]) return -1;
-			else if(next > 41) next = 41;
+			else if(next > 41) next = 41; //이동 횟수에 상관하지 않고 도착지점을 넘었다면 도착했다고 간주
 			
 			chk[marker[no]] = false;  //현재 위치에 말 지움
 			chk[next] = true;         //다음 위치에 말 그리기
 			marker[no] = next;        //no번 말의 현재 위치 저장
-			total += board[next];     //도착한 위치의 점수 획득
+			total += board[next];     //도착한 위치의 점수 획득 - 41 도착지점은 점수가 없음
 		}
 		
 		return total;
 	}
 	
 	public static int getNext(int[] marker, int no, int cnt){
-		int next = marker[no];
+		int next = marker[no]; //현재위치에서부터 시작
 		
 		for(int i=0; i<cnt; i++){
-			if(i == 0 && (marker[no] == 10 || marker[no] == 20 || marker[no] == 30)) next++;
+			if(next+1 == board.length) break; //도착지점이라면 break
+			
+			//10, 20, 30번째는 파란색 화살표 루트로 가야함
+			if(i == 0 && (marker[no] == 10 || marker[no] == 20 || marker[no] == 30)) next++;  
 			else{
 				switch (next) {
-					case 15, 35:
+					case 15 :
 						next += 10;
+						break;
+					case 35 :
+						next -= 10;
 						break;
 					case 29:
 						next += 11;
