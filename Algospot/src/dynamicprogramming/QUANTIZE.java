@@ -9,9 +9,9 @@ import java.util.StringTokenizer;
 public class QUANTIZE {
 	
 	static int[] pSqSum, pSum, arr;
-	static int n; 
+	static int n;
 	static final int INF = 987654321;
-	static int[][] cache; 
+	static int[][] cache;
 	
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -22,6 +22,10 @@ public class QUANTIZE {
 			st = new StringTokenizer(br.readLine());
 			n = Integer.parseInt(st.nextToken());
 			int s = Integer.parseInt(st.nextToken());
+			if(s >= n) {
+				System.out.println("0");
+				continue;
+			}
 			
 			arr = new int[n];
 			pSqSum = new int[n];
@@ -29,16 +33,10 @@ public class QUANTIZE {
 			cache = new int[n][n];
 			
 			st = new StringTokenizer(br.readLine());
-			if(s >= n) {
-				System.out.println("0");
-				continue;
-			}
-			
 			for(int i=0; i<n; i++) {
 				arr[i] = Integer.parseInt(st.nextToken());
 				Arrays.fill(cache[i], -1);
 			}
-			
 			
 			initialize();
 			
@@ -46,7 +44,7 @@ public class QUANTIZE {
 		}
 	}
 	
-	public static void initialize() {
+	private static void initialize() {
 		Arrays.sort(arr);
 		int tmp;
 		for(int i=0; i<n; i++) {
@@ -57,39 +55,31 @@ public class QUANTIZE {
 	}
 	
 	/**
-	 * 
-	 * @param from ¹­À½À» ½ÃÀÛÇÒ ¹è¿­ÀÇ ÀÎµ¦½º
-	 * @param parts ³²Àº ¹­À½ÀÇ °³¼ö
-	 * @return ÃÖ¼Ò ¿ÀÂ÷ Á¦°öÀÇ ÇÕ
+	 *
+	 * @param from ë¬¶ìŒì„ ì‹œìž‘í•  ë°°ì—´ì˜ ì¸ë±ìŠ¤
+	 * @param parts ë‚¨ì€ ë¬¶ìŒì˜ ê°œìˆ˜
+	 * @return ìµœì†Œ ì˜¤ì°¨ ì œê³±ì˜ í•©
 	 */
-	public static int quantize(int from, int parts) {
-		if(from == n) return 0; //¾çÀÚÈ­°¡ ¸ðµÎ ÁøÇàµÊ
-		if(parts == 0) return INF; //¹­À» ¼ö ¾øÀ½
-		
+	private static int quantize(int from, int parts) {
+		if(from == n) return 0; //ì–‘ìží™”ê°€ ëª¨ë‘ ì§„í–‰ë¨
+		if(parts == 0) return INF; //ë¬¶ì„ ìˆ˜ ì—†ìŒ
 		if(cache[from][parts] != -1) return cache[from][parts];
 		
 		int res = INF;
 		for(int partSize = 1; from + partSize <= n; ++partSize) {
-			res = Math.min(res, minError(from, from + partSize - 1) 
-					 			+ quantize(from + partSize, parts - 1));
+			res = Math.min(res, minError(from, from + partSize - 1)
+			        + quantize(from + partSize, parts - 1));
 			cache[from][parts] = res;
-			
 		}
-
 		return res;
 	}
 	
-	
-	public static int minError(int lo, int hi) {
+	private static int minError(int lo, int hi) {
 		int sum = pSum[hi] - (lo == 0 ? 0 : pSum[lo - 1]);
 		int pSum = pSqSum[hi] - (lo == 0 ? 0 : pSqSum[lo - 1]);
-		
 		int m = Math.round((float)sum / (hi - lo + 1));
-		
 		int res = pSum - (2 * m * sum) + (m * m * (hi - lo + 1));
 		
 		return res;
 	}
-	
-	
 }
