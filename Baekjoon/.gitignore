@@ -74,3 +74,7 @@ local.properties
 .project
 .classes
 /classes
+
+src/socar
+src/ebay
+src/line
