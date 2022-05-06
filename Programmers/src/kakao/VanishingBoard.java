@@ -38,9 +38,8 @@ public class VanishingBoard {
 	}
 	
 	public WL move(boolean isATurn, int moveCnt, int[][] board, int[] aloc, int[] bloc) {
-		
-		if ((isATurn && board[aloc[0]][aloc[1]] == 0) ||
-		  (!isATurn && board[bloc[0]][bloc[1]] == 0)){
+		if (loseWhenMyTurn(isATurn, aloc, board) ||
+		  loseWhenMyTurn(!isATurn, bloc, board) ){
 			return new WL(false, moveCnt);
 		}
 		
