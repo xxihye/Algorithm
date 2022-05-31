@@ -16,10 +16,12 @@ public class ParentheseConverter {
 		String u = p.substring(0, getIndex(p)); 
 		String v = p.substring(u.length());
 		
-		if(isAlright(u)) return u += solution(v);
+		if(isAlright(u)) return u + solution(v);
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("(" + solution(v) + ")");
+		sb.append("(")
+		  .append(solution(v))
+		  .append(")");
 				
 		u = u.substring(1, u.length()-1);
 		for(int i=0; i<u.length(); i++) 
@@ -28,13 +30,7 @@ public class ParentheseConverter {
 		return sb.toString();
 	}
 	
-	/**
-	 * 
-	 * @param p
-	 * ¹®ÀÚ¿­ w¸¦ µÎ "±ÕÇüÀâÈù °ýÈ£ ¹®ÀÚ¿­" u, v·Î ºÐ¸®ÇÏ±â À§ÇØ¼­ 
-	 * °ýÈ£ÀÇ ½Ö °³¼ö°¡ ¸Â´Â À§Ä¡¸¦ ¹ÝÈ¯ÇÔ.
-	 * @return
-	 */
+	//ë¬¸ìžì—´ wë¥¼ ë‘ "ê· í˜•ìž¡ížŒ ê´„í˜¸ ë¬¸ìžì—´" u, vë¡œ ë¶„ë¦¬í•˜ê¸° ìœ„í•´ ê´„í˜¸ì˜ ìŒ ê°œìˆ˜ê°€ ë§žëŠ” ìœ„ì¹˜ë¥¼ ë°˜í™˜í•¨.
 	public int getIndex(String p) {
 		int left = 0, right = 0;
 		for(int i=0; i<p.length(); i++) {
@@ -46,12 +42,7 @@ public class ParentheseConverter {
 		return p.length();
 	}
 	
-	/**
-	 * 
-	 * @param p
-	 * 
-	 * @return ÁÖ¾îÁø ÀÔ·Â p°¡ ¿Ã¹Ù¸¥ °ýÈ£ ¹®ÀÚ¿­ÀÎÁö ¿©ºÎ¸¦ ¹ÝÈ¯
-	 */
+	//ì£¼ì–´ì§„ ìž…ë ¥ pê°€ ì˜¬ë°”ë¥¸ ê´„í˜¸ ë¬¸ìžì—´ì¸ì§€ ì—¬ë¶€ë¥¼ ë°˜í™˜
 	public boolean isAlright(String p) {
 		Stack<Character> st = new Stack<>();
 		for(int i=0; i<p.length(); i++) {
