@@ -1,24 +1,24 @@
 package weekly;
 
 public class MutualEvaluation {
-	
-	//iÇàÀº i¹ø ÇÐ»ýÀÌ Æò°¡ÇÑ Á¡¼öµé...
-    //j¿­Àº j¿­ ÇÐ»ýÀÌ ¹ÞÀº Á¡¼öµé
+    
+    //ií–‰ì€ ië²ˆ í•™ìƒì´ í‰ê°€í•œ ì ìˆ˜ë“¤...
+    //jì—´ì€ jì—´ í•™ìƒì´ ë°›ì€ ì ìˆ˜ë“¤
     public String solution(int[][] scores) {
     
-    	//j¹øÂ° ÇÐ»ýÀÌ ¹ÞÀº ÃÑ Á¡¼ö °è»ê
-        //j¹øÂ° ÇÐ»ýÀÌ ÀÚ½Å¿¡°Ô ÁØ Á¡¼ö¸¦ ÀúÀå
-        //j¹øÂ° ÇÐ»ýÀÌ ¹ÞÀº Á¡¼öµé Áß ÃÖÀú, ÃÖ°í¸¦ ÀúÀå
-        //º»ÀÎ¿¡°Ô ÃÖÀú, ÃÖ°í Á¡¼ö¸¦ Áá´Ù¸é ÃÑ Á¡¼ö¿¡¼­ »©±â
-        //Æò±ÕÀ» ÀúÀå
+        //jë²ˆì§¸ í•™ìƒì´ ë°›ì€ ì´ ì ìˆ˜ ê³„ì‚°
+        //jë²ˆì§¸ í•™ìƒì´ ìžì‹ ì—ê²Œ ì¤€ ì ìˆ˜ë¥¼ ì €ìž¥
+        //jë²ˆì§¸ í•™ìƒì´ ë°›ì€ ì ìˆ˜ë“¤ ì¤‘ ìµœì €, ìµœê³ ë¥¼ ì €ìž¥
+        //ë³¸ì¸ì—ê²Œ ìµœì €, ìµœê³  ì ìˆ˜ë¥¼ ì¤¬ë‹¤ë©´ ì´ ì ìˆ˜ì—ì„œ ë¹¼ê¸°
+        //í‰ê· ì„ ì €ìž¥
         int r = scores.length, c = scores[0].length;
         double[] avgs = new double[r];
         
         for(int j=0; j<c; j++){
-            double sum = 0; //j¹øÂ°°¡ ¹ÞÀº ÃÑ Á¡¼ö
+            double sum = 0; //jë²ˆì§¸ê°€ ë°›ì€ ì´ ì ìˆ˜
             
             int min = 101, max = -1;
-            //ÀÚ±â ÀÚ½Å¿¡°Ô ÁØ Á¡¼ö¸¦ Á¦¿ÜÇÑ ÃÖ´ë, ÃÖ¼Ò Á¡¼ö¸¦ ÀúÀå
+            //ìžê¸° ìžì‹ ì—ê²Œ ì¤€ ì ìˆ˜ë¥¼ ì œì™¸í•œ ìµœëŒ€, ìµœì†Œ ì ìˆ˜ë¥¼ ì €ìž¥
             for(int i=0; i<r; i++) {
                 if(i != j){
                     if(scores[i][j] < min) min = scores[i][j];
@@ -28,8 +28,8 @@ public class MutualEvaluation {
             }
             
             double n = scores.length;
-            //º»ÀÎ¿¡°Ô ÁØ Á¡¼ö¸¦ Á¦¿ÜÇÑ ÃÖ´ë ÃÖ¼Òº¸´Ù Å©°Å³ª ÀÛÀ¸¸é
-            //Áßº¹µÇÁö ¾ÊÀº ÁøÂ¥ ÃÖ´ë, ÃÖ¼Ò Á¡¼öÀÌ¹Ç·Î Á¦¿ÜÇÔ
+            //ë³¸ì¸ì—ê²Œ ì¤€ ì ìˆ˜ë¥¼ ì œì™¸í•œ ìµœëŒ€ ìµœì†Œë³´ë‹¤ í¬ê±°ë‚˜ ìž‘ìœ¼ë©´
+            //ì¤‘ë³µë˜ì§€ ì•Šì€ ì§„ì§œ ìµœëŒ€, ìµœì†Œ ì ìˆ˜ì´ë¯€ë¡œ ì œì™¸í•¨
             if(scores[j][j] < min || scores[j][j] > max){
                 sum -= scores[j][j];
                 n--;
@@ -40,25 +40,12 @@ public class MutualEvaluation {
         StringBuilder sb = new StringBuilder();
         for(double d : avgs){
             int grade = (int) d / 10;
-            switch(grade){
-                case 9 : 
-                    sb.append('A');    
-                    break;
-                case 8 : 
-                    sb.append('B');    
-                    break;
-                case 7 : 
-                    sb.append('C');    
-                    break;
-                case 5 : 
-                	sb.append('D');
-                	break;
-                case 6 : 
-                	sb.append('D');
-                	break;
-                default : 
-                    sb.append('F');    
-                    break;
+            switch (grade) {
+                case 9 -> sb.append('A');
+                case 8 -> sb.append('B');
+                case 7 -> sb.append('C');
+                case 5, 6 -> sb.append('D');
+                default -> sb.append('F');
             }
         }
         
