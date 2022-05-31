@@ -4,9 +4,9 @@ import java.util.*;
 
 public class Puzzle {
 	
-	HashMap<String, Point> blockStore = new HashMap<>(); //Ã¤¿ö¾ßÇÒ ÆÛÁñ ºóÄ­
+	HashMap<String, Point> blockStore = new HashMap<>(); //ì±„ì›Œì•¼í•  í¼ì¦ ë¹ˆì¹¸
 	int cnt = 0;
-	ArrayList<Point> block; //ÆÛÁñ Á¶°¢ ÇÏ³ªÀÇ ÁÂÇ¥µé
+	ArrayList<Point> block; //í¼ì¦ ì¡°ê° í•˜ë‚˜ì˜ ì¢Œí‘œë“¤
 	int[] dr = {1, -1, 0, 0};
 	int[] dc = {0, 0, 1, -1};
 	
@@ -28,8 +28,8 @@ public class Puzzle {
 		for(int i=0; i<game_board.length; i++) {
 			for(int j=0; j<game_board.length; j++) {
 				if(game_board[i][j] == 1) {
-					//°°Àº ¹®ÀÚ¿­ÀÎ ÆÛÁñ ºóÄ­ÀÇ °¹¼ö¸¦ ÇÏ³ª ´õÇÏ°í ´Ù½Ã ÀúÀå
-					//cnt : bfs¸¦ ÅëÇØ ¾Ë¾Æ³½ ºóÄ­ÀÇ Å©±â
+					//ê°™ì€ ë¬¸ìì—´ì¸ í¼ì¦ ë¹ˆì¹¸ì˜ ê°¯ìˆ˜ë¥¼ í•˜ë‚˜ ë”í•˜ê³  ë‹¤ì‹œ ì €ì¥
+					//cnt : bfsë¥¼ í†µí•´ ì•Œì•„ë‚¸ ë¹ˆì¹¸ì˜ í¬ê¸°
 					String blockString = bfs(game_board, i, j);
 					Point bp = blockStore.getOrDefault(blockString, new Point(0, cnt)); 
 					bp.x++;
@@ -65,7 +65,7 @@ public class Puzzle {
 		return answer;
 	}
 	
-	//Å×ÀÌºí È¸Àü½ÃÅ°±â
+	//í…Œì´ë¸” íšŒì „ì‹œí‚¤ê¸°
 	public int[][] rotate(int[][] board){
 		int[][] newBoard = new int[board.length][board.length];
 		
@@ -118,9 +118,9 @@ public class Puzzle {
 			blockArr[p.x - minX][p.y - minY] = 1;
 		
 		StringBuilder sb= new StringBuilder();
-		for(int i=0; i<blockArr.length; i++) {
-			for(int j=0; j<blockArr[0].length; j++)
-				sb.append(blockArr[i][j]);
+		for (int[] ints : blockArr) {
+			for (int j = 0; j < blockArr[0].length; j++)
+				sb.append(ints[j]);
 			sb.append('n');
 		}
 		
@@ -129,8 +129,8 @@ public class Puzzle {
 }
 
 class Point {
-	int x; //¸ğÇüÀÇ °¹¼ö 
-	int y;   //¸ğÇüÀÇ Å©±â
+	int x;   //ëª¨í˜•ì˜ ê°¯ìˆ˜
+	int y;   //ëª¨í˜•ì˜ í¬ê¸°
 	
 	public Point(int x, int y) {
 		this.x = x;
