@@ -6,26 +6,27 @@ import java.util.HashMap;
 public class MultiLevelToothBrushSales {
 	public int[] solution(String[] enroll, String[] referral, String[] seller, int[] amount) {
 		
-		HashMap<String, String> t = new HashMap<>(); //ºÎ¸ğ ÀÚ½Ä
-		HashMap<String, Integer> a = new HashMap<>(); //¼öÀÍ±İ
+		HashMap<String, String> t = new HashMap<>(); //ë¶€ëª¨ ìì‹
+		HashMap<String, Integer> a = new HashMap<>(); //ìˆ˜ìµê¸ˆ
 		
-		for (int i = 0; i < enroll.length; i++) t.put(enroll[i], referral[i]); //ºÎ¸ğÀÚ½Ä ¿¬°á
+		for (int i = 0; i < enroll.length; i++)
+			t.put(enroll[i], referral[i]); //ë¶€ëª¨ìì‹ ì—°ê²°
 		
 		for (int i = 0; i < seller.length; i++) {
 			int r = amount[i] * 100;
 			String person = seller[i];
 			while (r > 0 && person != null) {
-				int c = r / 10; //10ÆÛ¼¾Æ® ¹èºĞ
-				r -= c; // 90% ÇÁ·Î °®±â
+				int c = r / 10; // 10í¼ì„¼íŠ¸ ë°°ë¶„
+				r -= c;         // 90í¼ì„¼íŠ¸ ê°–ê¸°
 				a.put(person, a.getOrDefault(person, 0) + r);
 				r = c;
 				person = t.get(person);
 			}
 		}
 		int[] answer = new int[enroll.length];
-		for (int i = 0; i < enroll.length; i++) {
+		for (int i = 0; i < enroll.length; i++)
 			answer[i] = a.getOrDefault(enroll[i], 0);
-		}
+		
 		return answer;
 	}
 	
@@ -38,7 +39,6 @@ public class MultiLevelToothBrushSales {
 		int[] res = mt.solution(enroll, referral, sellers, amount);
 		System.out.println();
 		System.out.println(Arrays.toString(res));
-		
 	}
 	
 	
