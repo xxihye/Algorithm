@@ -1,14 +1,15 @@
 package kakao;
 
 public class Keypad {
-	static int[] row = { 3, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3 }; // 0 ~ 9, *, # ÀÇ Çà
-	static int[] col = { 1, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 2 }; // 0 ~ 9, *, # ÀÇ ¿­
-
+	static int[] row = { 3, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3 }; // 0 ~ 9, *, # ì˜ í–‰
+	static int[] col = { 1, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 2 }; // 0 ~ 9, *, # ì˜ ì—´
+	
+	
 	public String solution(int[] numbers, String hand) {
-		boolean isRight = hand.equals("right") ? true : false;
+		boolean isRight = hand.equals("right");
 
-		int left = 10, right = 11; // ¿Ş¼Õ, ¿À¸¥¼ÕÀÌ À§Ä¡ÇØÀÖ´Â Å°ÆĞµå ¹øÈ£(* : 10, # : 11)
-		int leftCnt = 0, rightCnt = 0;
+		int left = 10, right = 11; // ì™¼ì†, ì˜¤ë¥¸ì†ì´ ìœ„ì¹˜í•´ìˆëŠ” í‚¤íŒ¨ë“œ ë²ˆí˜¸(* : 10, # : 11)
+		int leftCnt, rightCnt;
 		StringBuilder sb = new StringBuilder();
 
 		for (int num : numbers) {
