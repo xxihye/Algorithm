@@ -1,6 +1,4 @@
-package bruteforce;
-
-import java.util.Arrays;
+package kakao;
 
 public class LockAndKey {
 	
@@ -12,22 +10,22 @@ public class LockAndKey {
 		System.out.println(lk.solution(key, lock));
 	}
 	
-	  int[][] arr; //lockÀ» °¡¿îµ¥¿¡ °íÁ¤½ÃÅ³ Å« ¹è¿­
+	  int[][] arr; //lockì„ ê°€ìš´ë°ì— ê³ ì •ì‹œí‚¬ í° ë°°ì—´
 	    int kl, ll;
 	    public boolean solution(int[][] key, int[][] lock) {
 	        kl = key.length;
 	        ll = lock.length;
 	        
 	        arr = new int[(2*kl)+ll-2][(2*kl)+ll-2];
-	        
-	        //lockÀ» °¡¿îµ¥¿¡ °íÁ¤
+		
+		    //lockì„ ê°€ìš´ë°ì— ê³ ì •
 	        int cnt = 0;
-	        for(int i=kl-1; i<=kl+ll-2; i++) 
-	            for(int j=kl-1; j<=kl+ll-2; j++)    
+	        for(int i=kl-1; i<=kl+ll-2; i++)
+	            for(int j=kl-1; j<=kl+ll-2; j++)
 	                arr[i][j] = lock[i-kl+1][j-kl+1];
 	        
-	        // for 1 : 4¹øµ¿¾È 90µµ¾¿ µ¹¸®±â
-	        // for 2 : key°¡ Á¸ÀçÇÒ ¼ö ÀÖ´Â À§Ä¡¿¡¼­ lock°ú ¸Â¾Æ¶³¾îÁö´ÂÁö È®ÀÎ
+	        // for 1 : 4ë²ˆë™ì•ˆ 90ë„ì”© ëŒë¦¬ê¸°
+		    // for 2 : keyê°€ ì¡´ì¬í•  ìˆ˜ ìˆëŠ” ìœ„ì¹˜ì—ì„œ lockê³¼ ë§ì•„ë–¨ì–´ì§€ëŠ”ì§€ í™•ì¸
 	        for(int r=0; r<4; r++){
 	            key = rotate(key);
 	        
@@ -42,7 +40,7 @@ public class LockAndKey {
 	        return false;
 	    }
 	    
-	    //(x, y À§Ä¡¿¡¼­ ½ÃÀÛ)
+	    //(x, y ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 	    public boolean isMatch(int x, int y, int[][] key, int[][] tempTable){
 	        for(int i=0; i<key.length; i++){
 	            for(int j=0; j<key.length; j++){
@@ -51,8 +49,8 @@ public class LockAndKey {
 	            }
 	        }
 	        
-	        for(int i=kl-1; i<=kl+ll-2; i++) 
-	            for(int j=kl-1; j<=kl+ll-2; j++)    
+	        for(int i=kl-1; i<=kl+ll-2; i++)
+	            for(int j=kl-1; j<=kl+ll-2; j++)
 	                if(tempTable[i][j] == 0) return false;
 	            
 	        
